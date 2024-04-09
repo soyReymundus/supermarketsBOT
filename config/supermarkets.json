@@ -1,0 +1,17 @@
+[
+    {
+        "name": "La Anonima",
+        "source": "https://www.laanonima.com.ar/",
+        "products": [
+            {
+                "name": "",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Kg",
+                "links": [
+
+                ]
+            }
+        ]
+    }
+]

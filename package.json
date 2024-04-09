@@ -1,0 +1,16 @@
+{
+  "name": "supermarketsbot",
+  "description": "Este BOT tiene como funalidad brindar datos sobre los precios de los alimentos en distintos supermercados en linea.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "Reymundus",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "twitter": "^1.7.1",
+    "twitter-api-v2": "^1.16.1"
+  },
+  "type": "commonjs"
+}
