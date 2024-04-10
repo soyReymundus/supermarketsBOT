@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Example",
+        "source": "https://example.com",
+        "products": [
+            {
+                "name": "Aceite Girasol",
+                "quantity": 1.5,
+                "unitOfMeasurement": "Litros",
+                "abbreviation": "1.5 Lt",
+                "links": [
+                    "https://example.com/AceiteGirasol"
+                ]
+            }
+        ]
+    }
+]

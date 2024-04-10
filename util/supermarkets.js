@@ -1,5 +1,9 @@
 /**
- * Archivo de utilidad encargado de proporcionar las clases necesarias para poder gestionar los supermercados y sus productos.
+ * @description Archivo de utilidad encargado de proporcionar las clases necesarias para poder gestionar los supermercados y sus productos.
+ */
+
+/**
+ * Modulo que proporciona las clases necesarias para poder gestionar los supermercados y sus productos.
  */
 module.exports = {
     SuperMarkets,
