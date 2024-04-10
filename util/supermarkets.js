@@ -2,15 +2,7 @@
  * @description Archivo de utilidad encargado de proporcionar las clases necesarias para poder gestionar los supermercados y sus productos.
  */
 
-/**
- * Modulo que proporciona las clases necesarias para poder gestionar los supermercados y sus productos.
- */
-module.exports = {
-    SuperMarkets,
-    SuperMarket,
-    Product,
-    ProductLink
-};
+const anonimaManager = require("./sourceManagers/laAnonima.js");
 
 /**
  * Esta clase se encarga de gestionar los supermercados en general.
@@ -103,7 +95,7 @@ class Product {
      * @param {SuperMarket} supermarket El supermercado donde se encuentra el producto.
      */
     constructor(data, supermarket) {
-        if (!product || !(supermarket instanceof SuperMarket)) throw new Error("No supermarket was provided for the product.");
+        if (!supermarket || !(supermarket instanceof SuperMarket)) throw new Error("No supermarket was provided for the product.");
 
         /**
          * El supermercado donde se encuentra el producto.
@@ -157,7 +149,62 @@ class Product {
         for (let index = 0; index < data["links"].length; index++) {
             const JSONLink = data["links"][index];
 
-            this.links.push(new ProductLink(JSONLink, this));
+            this.links.push(new ProductLink(JSONLink, this, true));
+        };
+    };
+
+    /**
+     * Obtienes el promedio de todos los productos.
+     * Para obtener el precio de cada fuente individual revisa el array Product.links
+     * @returns {Number}
+     */
+    getAverage() {
+        let totalOfLinks = this.links.length;
+        let totalOfPrices = 0;
+
+        for (let index = 0; index < this.links.length; index++) {
+            const link = this.links[index];
+
+            if (!link.price) {
+                totalOfLinks--;
+                continue;
+            };
+
+            totalOfPrices += link.price;
+        };
+
+        if (totalOfLinks == 0) throw new Error("There are no prices available to analyze.");
+
+        return totalOfPrices / totalOfLinks;
+    };
+
+    /**
+     * Obtienes la mediana de todos los productos.
+     * Para obtener el precio de cada fuente individual revisa el array Product.links
+     * @returns {Number}
+     */
+    getMedian() {
+        let prices = [];
+
+        for (let index = 0; index < this.links.length; index++) {
+            const link = this.links[index];
+
+            if (!link.price) continue;
+
+            prices.push(link.price);
+        };
+
+        if (prices.length == 0) throw new Error("There are no prices available to analyze.");
+        if (prices.length == 1) return prices[0];
+
+        prices.sort((a, b) => {
+            return a - b
+        });
+
+        if(prices.length % 2 == 0) { 
+            return prices[(prices.length - 2) / 2];
+        } else {
+            return prices[(prices.length - 1) / 2];
         };
     };
 };
@@ -171,8 +218,9 @@ class ProductLink {
      * Esta clase se encarga de gestionar el link de un producto.
      * @param {String} data El link a ser gestionado.
      * @param {Product} product El producto de donde proviene el link.
+     * @param {Boolean} getPrice Si es verdadero se solicitara el precio del producto en el constructor.
      */
-    constructor(data, product) {
+    constructor(data, product, getPrice) {
         if (!product || !(product instanceof Product)) throw new Error("No product was provided for the link.");
 
         /**
@@ -188,5 +236,54 @@ class ProductLink {
          * @type {String}
          */
         this.link = data;
+
+        /**
+         * El precio del producto especifico.
+         * @type {Number}
+         */
+        this.price;
+
+        if (getPrice) this.getPrice()
+            .catch((e) => {
+                console.warn(e);
+            });
     };
+
+
+    /**
+     * Actualizas el precio del producto de esta clase.
+     * Tambien devuelve ese mismo precio.
+     * @returns {Promise<Number>}
+     */
+    getPrice() {
+        return new Promise((resolve, reject) => {
+            let source = this.product.supermarket.source;
+
+            switch (source) {
+                case "https://www.laanonima.com.ar":
+                    anonimaManager.getPrice(this.link)
+                        .then((price) => {
+                            resolve(price);
+                            this.price = price;
+                        })
+                        .catch((e) => {
+                            reject(e);
+                        });
+                    break;
+                default:
+                    reject(new Error("Product source is not supported"));
+                    break;
+            };
+        });
+    };
+};
+
+/**
+ * Modulo que proporciona las clases necesarias para poder gestionar los supermercados y sus productos.
+ */
+module.exports = {
+    SuperMarkets,
+    SuperMarket,
+    Product,
+    ProductLink
 };

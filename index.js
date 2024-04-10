@@ -11,12 +11,6 @@ const twitterClient = new TwitterApi({
 });
 //const twitterClient = twitterClient.readWrite;
 
-twitterClient.v2.tweet("Hello world")
-    .then((twett) => {
-        console.log(twett);
-    })
-    .catch((e) => {
-        console.log(e);
-    });
+
 
 
