@@ -85,6 +85,141 @@
                 "links": [
                     "https://supermercado.laanonimaonline.com/frescos/panificados/panes-de-molde-y-tortillas/pan-lacteado-grande-best-x-600-g/art_1662/"
                 ]
+            },
+            {
+                "name": "Leche",
+                "quantity": 1,
+                "unitOfMeasurement": "Litros",
+                "abbreviation": "1 Lt",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-l-v-entera-tregar-x-1-lt/art_4950/",
+                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-lv-entera-clasica-3-las-tres-ninas-x-1-lt/art_22976/",
+                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-ultra-entera-sachet-3-casanto-x-1-lt/art_19586/",
+                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-l-v-entera-clasica-3-la-serenisima-botella-x-1-lt/art_1732/",
+                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-larga-vida-entera-ilolay-x-1-l/art_17882/"
+                ]
+            },
+            {
+                "name": "Yerba",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-c-palo-suave-original-union-x-1-kg/art_14357/",
+                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-c-palo-suave-playadito-x-1-kg/art_12710/",
+                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-con-palo-chamingo-x-1-kg/art_18423/",
+                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-tradicional-amanda-x-1-kg/art_3180/"
+                ]
+            },
+            {
+                "name": "Zanahoria",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/zanahoria-kg/art_2391/"
+                ]
+            },
+            {
+                "name": "Berenjena",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/berenjena-kg/art_2376/"
+                ]
+            },
+            {
+                "name": "Tomate Perita",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/tomate-perita-kg/art_3308/"
+                ]
+            },
+            {
+                "name": "Cebolla",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/cebolla-kg/art_56/"
+                ]
+            },
+            {
+                "name": "Papa Granel",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/papa-granel-kg/art_58/"
+                ]
+            },
+            {
+                "name": "Acelga en Paquete",
+                "quantity": 500,
+                "unitOfMeasurement": "Gramos",
+                "abbreviation": "500 G",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/congelados/papas-y-vegetales/vegetales/acelga-congelada-granja-del-sol-x-500-g/art_24478/",
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/acelga-envasada-x-500-gr/art_1561/"
+                ]
+            },
+            {
+                "name": "Naranja",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/naranja-kg/art_2401/"
+                ]
+            },
+            {
+                "name": "Manzana",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/manzana-red-elegida-kg/art_2399/"
+                ]
+            },
+            {
+                "name": "Bola de Lomo",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/lomo-e-v-estancias-la-kg/art_2332/",
+                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/bola-de-lomo-feteada-e-v-estancias-la-kg/art_1398/"
+                ]
+            },
+            {
+                "name": "Asado (con Hueso)",
+                "quantity": 1,
+                "unitOfMeasurement": "Kilogramos",
+                "abbreviation": "1 Gr",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/asado-c-hueso-nt-kg/art_6774/"
+                ]
+            },
+            {
+                "name": "Paleta Cocida (en Fetas)",
+                "quantity": 200,
+                "unitOfMeasurement": "Gramos",
+                "abbreviation": "200 G",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/frescos/fiambres/feteados/paleta-cocida-feteada-42-x-200-g/art_3058/"
+                ]
+            },
+            {
+                "name": "Carne Picada Comun",
+                "quantity": 500,
+                "unitOfMeasurement": "Gramos",
+                "abbreviation": "500 G",
+                "links": [
+                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/carne-picada-e-v-estancias-la-x-500-g/art_1382/"
+                ]
             }
         ]
     }
