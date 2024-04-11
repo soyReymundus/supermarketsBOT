@@ -3,6 +3,7 @@
  */
 
 const anonimaManager = require("./sourceManagers/laAnonima.js");
+const operations = require("./operations.js");
 
 /**
  * Esta clase se encarga de gestionar los supermercados en general.
@@ -29,6 +30,55 @@ class SuperMarkets {
 
             this.supermarkets.push(new SuperMarket(JSONProduct, this));
         };
+    };
+
+    /**
+     * Obtienes un array con los precios en bruto de todos los productos de todos supermercados.
+     * @private
+     * @returns {Number[]}
+     */
+    getRawPrices() {
+        return getSubRawPrices(this.supermarkets);
+    };
+
+    /**
+     * Obtienes la suma del precio de todos los productos de todos supermercados.
+     * @returns {Number}
+     */
+    totalPrices() {
+        return this.getRawPrices().reduce((a, b) => a + b, 0);
+    };
+
+    /**
+     * Obtienes el promedio de todos los productos de todos los supermercados.
+     * @returns {Number}
+     */
+    getAverage() {
+        return operations.getAverage(this.getRawPrices());
+    };
+
+    /**
+     * Obtienes la mediana de todos los productos de todos los supermercados.
+     * @returns {Number}
+     */
+    getMedian() {
+        return operations.getMedian(this.getRawPrices());
+    };
+
+    /**
+     * Obtienes la suma del promedio de los precios de todos los supermercados.
+     * @returns {Number}
+     */
+    totalAverages() {
+        return totalSubClassAverages(this.supermarkets);
+    };
+
+    /**
+     * Obtienes la suma de la mediana de los precios de todos los supermercados.
+     * @returns {Number}
+     */
+    totalMedian() {
+        return totalSubClassMedian(this.supermarkets);
     };
 };
 
@@ -80,6 +130,55 @@ class SuperMarket {
 
             this.products.push(new Product(JSONProduct, this));
         };
+    };
+
+    /**
+     * Obtienes un array con los precios en bruto de todos los productos del supermercado.
+     * @private
+     * @returns {Number[]}
+     */
+    getRawPrices() {
+        return getSubRawPrices(this.products);
+    };
+
+    /**
+     * Obtienes la suma del precio de todos los productos del supermercado.
+     * @returns {Number}
+     */
+    totalPrices() {
+        return this.getRawPrices().reduce((a, b) => a + b, 0);
+    };
+
+    /**
+     * Obtienes el promedio de todos los productos del supermercado.
+     * @returns {Number}
+     */
+    getAverage() {
+        return operations.getAverage(this.getRawPrices());
+    };
+
+    /**
+     * Obtienes la mediana de todos los productos del supermercado.
+     * @returns {Number}
+     */
+    getMedian() {
+        return operations.getMedian(this.getRawPrices());
+    };
+
+    /**
+     * Obtienes la suma del promedio de los precios de todos los productos del supermercado.
+     * @returns {Number}
+     */
+    totalAverages() {
+        return totalSubClassAverages(this.products);
+    };
+
+    /**
+     * Obtienes la suma de la mediana de los precios de todos los productos del supermercado.
+     * @returns {Number}
+     */
+    totalMedian() {
+        return totalSubClassMedian(this.products);
     };
 };
 
@@ -154,58 +253,50 @@ class Product {
     };
 
     /**
-     * Obtienes el promedio de todos los productos.
-     * Para obtener el precio de cada fuente individual revisa el array Product.links
-     * @returns {Number}
+     * Obtienes un array con los precios en bruto de todas las fuentas del producto.
+     * @private
+     * @returns {Number[]}
      */
-    getAverage() {
-        let totalOfLinks = this.links.length;
-        let totalOfPrices = 0;
-
-        for (let index = 0; index < this.links.length; index++) {
-            const link = this.links[index];
-
-            if (!link.price) {
-                totalOfLinks--;
-                continue;
-            };
-
-            totalOfPrices += link.price;
-        };
-
-        if (totalOfLinks == 0) throw new Error("There are no prices available to analyze.");
-
-        return totalOfPrices / totalOfLinks;
-    };
-
-    /**
-     * Obtienes la mediana de todos los productos.
-     * Para obtener el precio de cada fuente individual revisa el array Product.links
-     * @returns {Number}
-     */
-    getMedian() {
+    getRawPrices() {
         let prices = [];
 
         for (let index = 0; index < this.links.length; index++) {
             const link = this.links[index];
 
             if (!link.price) continue;
+            if (typeof link.price != "number") continue;
 
             prices.push(link.price);
         };
 
-        if (prices.length == 0) throw new Error("There are no prices available to analyze.");
-        if (prices.length == 1) return prices[0];
+        return prices;
+    };
 
-        prices.sort((a, b) => {
-            return a - b
-        });
+    /**
+     * Obtienes la suma del precio de todos las fuentes.
+     * Para obtener el precio de cada fuente individual revisa el array Product.links
+     * @returns {Number}
+     */
+    totalPrices() {
+        return this.getRawPrices().reduce((a, b) => a + b, 0);
+    };
 
-        if(prices.length % 2 == 0) { 
-            return prices[(prices.length - 2) / 2];
-        } else {
-            return prices[(prices.length - 1) / 2];
-        };
+    /**
+     * Obtienes el promedio de todos las fuentes.
+     * Para obtener el precio de cada fuente individual revisa el array Product.links
+     * @returns {Number}
+     */
+    getAverage() {
+        return operations.getAverage(this.getRawPrices());
+    };
+
+    /**
+     * Obtienes la mediana de todos las fuentes.
+     * Para obtener el precio de cada fuente individual revisa el array Product.links
+     * @returns {Number}
+     */
+    getMedian() {
+        return operations.getMedian(this.getRawPrices());
     };
 };
 
@@ -276,6 +367,57 @@ class ProductLink {
             };
         });
     };
+};
+
+/**
+ * Funcion que ayuda a acortar codigo obteniendo los precios en brutos de cualquier clase que dependa de una subclase.
+ * @param {any[]} subClass La clase a escanear en busca de precios en bruto.
+ * @returns {Number[]}
+ */
+function getSubRawPrices(subClass) {
+    let prices = [];
+
+    for (let index = 0; index < subClass.length; index++) {
+        const originalClass = subClass[index];
+
+        prices = prices.concat(originalClass.getRawPrices());
+    };
+
+    return prices;
+};
+
+/**
+ * Obtienes la suma del promedio de toda la subclase.
+ * @param {any[]} subClass La clase a escanear.
+ * @return {Number}
+ */
+function totalSubClassAverages(subClass) {
+    let total = 0;
+
+    for (let index = 0; index < subClass.length; index++) {
+        const originalClass = subClass[index];
+
+        total += originalClass.getAverage();
+    };
+
+    return total;
+};
+
+/**
+ * Obtienes la suma de la mediana de toda la subclase.
+ * @param {any[]} subClass La clase a escanear.
+ * @return {Number}
+ */
+function totalSubClassMedian(subClass) {
+    let total = 0;
+
+    for (let index = 0; index < subClass.length; index++) {
+        const originalClass = subClass[index];
+
+        total += originalClass.getMedian();
+    };
+
+    return total;
 };
 
 /**
