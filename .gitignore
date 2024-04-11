@@ -133,5 +133,7 @@ dist
 # Support Files
 test.json
 test.js
+test2.js
 lista.txt
 test.txt
+reports/
