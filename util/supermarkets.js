@@ -80,6 +80,15 @@ class SuperMarkets {
     totalMedian() {
         return totalSubClassMedian(this.supermarkets);
     };
+
+    /**
+     * Esta funcion convierte la clase en un JSON.
+     * Ideal para almacenar en archivos o MongoDB.
+     * @returns {{name: String, source: String, products: {unitOfMeasurement: String, quantity: Number, name: String, abbreviation: String, links: {price: Number, link: String}[]}[]}[]}
+     */
+    toJSON() {
+        return getSubJSONs(this.supermarkets);
+    };
 };
 
 /**
@@ -179,6 +188,19 @@ class SuperMarket {
      */
     totalMedian() {
         return totalSubClassMedian(this.products);
+    };
+
+    /**
+     * Esta funcion convierte la clase en un JSON.
+     * Ideal para almacenar en archivos o MongoDB.
+     * @returns {{name: String, source: String, products: {unitOfMeasurement: String, quantity: Number, name: String, abbreviation: String, links: {price: Number, link: String}[]}[]}}
+     */
+    toJSON() {
+        return {
+            "name": this.name,
+            "source": this.source,
+            "products": getSubJSONs(this.products)
+        };
     };
 };
 
@@ -298,6 +320,21 @@ class Product {
     getMedian() {
         return operations.getMedian(this.getRawPrices());
     };
+
+    /**
+     * Esta funcion convierte la clase en un JSON.
+     * Ideal para almacenar en archivos o MongoDB.
+     * @returns {{unitOfMeasurement: String, quantity: Number, name: String, abbreviation: String, links: {price: Number, link: String}[]}}
+     */
+    toJSON() {
+        return {
+            "unitOfMeasurement": this.unitOfMeasurement,
+            "quantity": this.quantity,
+            "name": this.name,
+            "abbreviation": this.abbreviation,
+            "links": getSubJSONs(this.links)
+        };
+    };
 };
 
 /**
@@ -367,6 +404,18 @@ class ProductLink {
             };
         });
     };
+
+    /**
+     * Esta funcion convierte la clase en un JSON.
+     * Ideal para almacenar en archivos o MongoDB.
+     * @returns {{price: Number, link: String}}
+     */
+    toJSON() {
+        return {
+            "price": this.price,
+            "link": this.link
+        };
+    };
 };
 
 /**
@@ -384,6 +433,23 @@ function getSubRawPrices(subClass) {
     };
 
     return prices;
+};
+
+/**
+ * Funcion que ayuda a convertir un array de clases en un JSON.
+ * @param {any[]} subClass Las clases a escanear para convertir en JSONs.
+ * @returns {any[]}
+ */
+function getSubJSONs(subClass) {
+    let array = [];
+
+    for (let index = 0; index < subClass.length; index++) {
+        const originalClass = subClass[index];
+
+        array.push(originalClass.toJSON());
+    };
+
+    return array;
 };
 
 /**
