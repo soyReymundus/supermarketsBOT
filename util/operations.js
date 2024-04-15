@@ -38,9 +38,21 @@ function getAverage(list) {
 };
 
 /**
+ * Obtines la diferencia porcentual entre dos numeros.
+ * @param {Number} oldValue El numero ha ser comparado.
+ * @param {Number} newValue El para comparar.
+ * @returns {Number}
+ */
+function getPercentage(oldValue, newValue) {
+    let difference = newValue - oldValue;
+    return difference / oldValue;
+};
+
+/**
  * Modulo que proporciona distintas funciones matematicas.
  */
 module.exports = {
     getAverage,
-    getMedian
+    getMedian,
+    getPercentage
 };

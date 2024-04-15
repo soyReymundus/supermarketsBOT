@@ -8,8 +8,8 @@
   "author": "Reymundus",
   "license": "MIT",
   "dependencies": {
+    "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
-    "twitter": "^1.7.1",
     "twitter-api-v2": "^1.16.1"
   },
   "type": "commonjs"

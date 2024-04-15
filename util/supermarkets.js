@@ -3,6 +3,7 @@
  */
 
 const anonimaManager = require("./sourceManagers/laAnonima.js");
+const carrefourManager = require("./sourceManagers/carrefour.js");
 const operations = require("./operations.js");
 
 /**
@@ -88,6 +89,38 @@ class SuperMarkets {
      */
     toJSON() {
         return getSubJSONs(this.supermarkets);
+    };
+
+    /**
+     * Obtienes la fuente de informacion de todos los supermercados.
+     * @returns {String[]}
+     */
+    getSources() {
+        let source = [];
+
+        for (let index = 0; index < this.supermarkets.length; index++) {
+            const supermarket = this.supermarkets[index];
+
+            source.push(supermarket.source);
+        };
+
+        return source;
+    };
+
+    /**
+     * Obtienes los nombres de todos los supermercados.
+     * @returns {String[]}
+     */
+    getNames() {
+        let names = [];
+
+        for (let index = 0; index < this.supermarkets.length; index++) {
+            const supermarket = this.supermarkets[index];
+
+            names.push(supermarket.name);
+        };
+
+        return names;
     };
 };
 
@@ -212,7 +245,7 @@ class Product {
 
     /**
      * Esta clase se encarga de gestionar un producto.
-     * @param {{"name": String, "quantity": Number, "unitOfMeasurement": String, "abbreviation": String, "links": String[]}} data Datos del producto a gestionar.
+     * @param {{"name": String, "quantity": Number, "unitOfMeasurement": String, "abbreviation": String, "links": String[] }} data Datos del producto a gestionar.
      * @param {SuperMarket} supermarket El supermercado donde se encuentra el producto.
      */
     constructor(data, supermarket) {
@@ -344,9 +377,9 @@ class ProductLink {
 
     /**
      * Esta clase se encarga de gestionar el link de un producto.
-     * @param {String} data El link a ser gestionado.
+     * @param {String | {link: String, price: Number}} data El link a ser gestionado.
      * @param {Product} product El producto de donde proviene el link.
-     * @param {Boolean} getPrice Si es verdadero se solicitara el precio del producto en el constructor.
+     * @param {Boolean} getPrice Si es verdadero se solicitara el precio del producto en el constructor. Si es un numero se asignara ese precio por defecto.
      */
     constructor(data, product, getPrice) {
         if (!product || !(product instanceof Product)) throw new Error("No product was provided for the link.");
@@ -357,19 +390,25 @@ class ProductLink {
          */
         this.product = product;
 
-        if (!data || typeof data != "string") throw new Error("No link was provided for the product.");
-
         /**
          * El link que se esta gestionado.
-         * @type {String}
+         * @type {String | {link: String, price: Number}}
          */
-        this.link = data;
+        this.link
 
         /**
          * El precio del producto especifico.
          * @type {Number}
          */
         this.price;
+
+        if (!data || typeof data != "string") {
+            this.link = data["link"];
+            this.price = data["price"];
+        } else {
+            this.link = data;
+        };
+
 
         if (getPrice) this.getPrice()
             .catch((e) => {
@@ -388,8 +427,18 @@ class ProductLink {
             let source = this.product.supermarket.source;
 
             switch (source) {
-                case "https://www.laanonima.com.ar":
+                case "https://supermercado.laanonimaonline.com":
                     anonimaManager.getPrice(this.link)
+                        .then((price) => {
+                            resolve(price);
+                            this.price = price;
+                        })
+                        .catch((e) => {
+                            reject(e);
+                        });
+                    break;
+                case "https://www.carrefour.com.ar":
+                    carrefourManager.getPrice(this.link)
                         .then((price) => {
                             resolve(price);
                             this.price = price;
@@ -420,7 +469,7 @@ class ProductLink {
 
 /**
  * Funcion que ayuda a acortar codigo obteniendo los precios en brutos de cualquier clase que dependa de una subclase.
- * @param {any[]} subClass La clase a escanear en busca de precios en bruto.
+ * @param {any[]} subClass Las clases a escanear en busca de precios en bruto.
  * @returns {Number[]}
  */
 function getSubRawPrices(subClass) {
@@ -454,7 +503,7 @@ function getSubJSONs(subClass) {
 
 /**
  * Obtienes la suma del promedio de toda la subclase.
- * @param {any[]} subClass La clase a escanear.
+ * @param {any[]} subClass Las clases a escanear.
  * @return {Number}
  */
 function totalSubClassAverages(subClass) {
@@ -471,7 +520,7 @@ function totalSubClassAverages(subClass) {
 
 /**
  * Obtienes la suma de la mediana de toda la subclase.
- * @param {any[]} subClass La clase a escanear.
+ * @param {any[]} subClass Las clases a escanear.
  * @return {Number}
  */
 function totalSubClassMedian(subClass) {

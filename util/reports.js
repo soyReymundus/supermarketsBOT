@@ -34,14 +34,15 @@ function create(content, name) {
  * Si no se especifica una fecha se tomara el ultimo informe
  * @param {String} name El nombre del informe.
  * @param {String?} date La fecha del informe.
- * @returns {String | null}
+ * @returns {Object | null}
  */
 function get(name, date = "last") {
     try {
         if (!name) return reject(new Error("A name was not provided to search the report."));
         let fileName = `./reports/${name}-${date}.json`;
 
-        return fs.readFileSync(fileName).toString();
+
+        return JSON.parse(fs.readFileSync(fileName).toString());
     } catch (e) {
         console.log(e)
         return null;
