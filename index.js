@@ -26,12 +26,14 @@ setInterval(() => {
 var lastClosing = 0;
 setInterval(() => {
     let now = new Date();
-    let date;
-    let oldBasicFoodBasket;
-    //
+
     if (now.getHours() != 22) return;
     if (now.getDay() == 6) return;
     if (lastClosing == now.getDate());
+    lastClosing = now.getDate();
+
+    let date;
+    let oldBasicFoodBasket;
 
     if (now.getDay() == 7) {
         let pastWeek = new Date(Date.now() - 604800000);
@@ -51,7 +53,6 @@ setInterval(() => {
 
     BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), "dia");
 
-    lastClosing = now.getDate();
     reports.create(report, "basicFoodBasket");
 }, 15000);
 
