@@ -61,6 +61,10 @@ var lastAveragesPrice = 0;
 var lastMedianPrice = 0;
 setTimeout(() => {
     setInterval(() => {
+        let now = new Date();
+
+        if (now.getDay() == 6 || now.getDay() == 7) return;
+        if (now.getHours() < 8 || now.getHours() > 21) return;
         if (!lastMedianPrice) return lastMedianPrice = basicFoodBasket.totalMedian();
         if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.totalAverages();
 
