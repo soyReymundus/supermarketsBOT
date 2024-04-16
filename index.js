@@ -15,12 +15,12 @@ let basicFoodBasketJSON = JSON.parse(fs.readFileSync("supermarkets/basicFoodBask
 let basicFoodBasket = new supermarketsManager.SuperMarkets(basicFoodBasketJSON);
 
 setTimeout(() => {
-    intervals.updateSupermarketsPrices(basicFoodBasket, false, 15000);
+    intervals.updateSupermarketsPrices(basicFoodBasket, false, 17000);
 }, 3600000 / 12);
 
 setTimeout(() => {
-    intervals.updateSupermarketsPrices(basicFoodBasket, false, 15000);
-}, 3600000 / 2);
+    intervals.updateSupermarketsPrices(basicFoodBasket, false, 17000);
+}, 3600000);
 
 setInterval(() => {
     intervals.updateSupermarketsPrices(basicFoodBasket, true);
