@@ -97,7 +97,7 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
         try {
             let msg = "";
             let title = "No hubo variacion!";
-            let percentage = (rawPercentage * 100).toString();
+            let percentage = (rawPercentage * 100).toFixed(2);
 
             if (rawPercentage > 0) {
                 title = "aumento!";
@@ -173,7 +173,7 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
         try {
             let msg = "";
             let title = "No hubo variacion!";
-            let percentage = (operations.getPercentage(oldAveragesPrice, newAveragesPrice) * 100).toString();
+            let percentage = (operations.getPercentage(oldAveragesPrice, newAveragesPrice) * 100).toFixed(2);
 
             if (oldAveragesPrice > newAveragesPrice) {
                 title = "Inflacion!";

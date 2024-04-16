@@ -24,7 +24,7 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
     return new Promise(async (resolve, reject) => {
         try {
             let originalTweet = "";
-            let percentage = (rawPercentage * 100).toString();
+            let percentage = (rawPercentage * 100).toFixed(2);
             let source = "";
 
             if (rawPercentage > 0) {
@@ -134,7 +134,7 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
     return new Promise(async (resolve, reject) => {
         try {
             let originalTweet = "";
-            let percentage = (operations.getPercentage(oldAveragesPrice, newAveragesPrice) * 100).toString();
+            let percentage = (operations.getPercentage(oldAveragesPrice, newAveragesPrice) * 100).toFixed(2);
             let source = "";
 
             if (oldAveragesPrice > newAveragesPrice) {

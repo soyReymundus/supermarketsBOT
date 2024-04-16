@@ -22,7 +22,7 @@ async function updateSupermarketPrices(supermarket, skipCheck = false, time2Slee
 
             if (!skipCheck) {
                 if (!!link.price) continue;
-            };            
+            };
 
             await sleep(time2Sleep);
 

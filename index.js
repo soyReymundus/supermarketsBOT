@@ -18,6 +18,10 @@ setTimeout(() => {
     intervals.updateSupermarketsPrices(basicFoodBasket, false, 15000);
 }, 3600000 / 12);
 
+setTimeout(() => {
+    intervals.updateSupermarketsPrices(basicFoodBasket, false, 15000);
+}, 3600000 / 2);
+
 setInterval(() => {
     intervals.updateSupermarketsPrices(basicFoodBasket, true);
 }, 3600000 * 1.5);
@@ -29,7 +33,7 @@ setInterval(() => {
 
     if (now.getHours() != 22) return;
     if (now.getDay() == 6) return;
-    if (lastClosing == now.getDate());
+    if (lastClosing == now.getDate()) return;
     lastClosing = now.getDate();
 
     let date;
