@@ -98,10 +98,12 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
             let msg = "";
             let title = "No hubo variacion!";
             let percentage = (rawPercentage * 100).toFixed(2);
+            percentage = percentage == "0.00" ? "0.01" : percentage;
+            percentage = percentage == "-0.00" ? "-0.01" : percentage;
 
             if (rawPercentage > 0) {
                 title = "aumento!";
-                msg = `El precio de ${name} tuvo una variacion positiva de un **${percentage}%**`;
+                msg = `El precio de ${name} tuvo una variacion positiva de un +**${percentage}%**`;
             } else if (rawPercentage < 0) {
                 title = "disminucion!";
                 msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%**`;
@@ -174,10 +176,12 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
             let msg = "";
             let title = "No hubo variacion!";
             let percentage = (operations.getPercentage(oldAveragesPrice, newAveragesPrice) * 100).toFixed(2);
+            percentage = percentage == "0.00" ? "0.01" : percentage;
+            percentage = percentage == "-0.00" ? "-0.01" : percentage;
 
             if (oldAveragesPrice > newAveragesPrice) {
                 title = "Inflacion!";
-                msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%** %FECHA%.\nEl precio promedio acutal es de: **${newAveragesPrice}**\nEl precio mediano acutal es de: **${median}**`;
+                msg = `El precio de ${name} tuvo una variacion positiva de un +**${percentage}%** %FECHA%.\nEl precio promedio acutal es de: **${newAveragesPrice}**\nEl precio mediano acutal es de: **${median}**`;
             } else if (oldAveragesPrice < newAveragesPrice) {
                 title = "Deflacion!";
                 msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%** %FECHA%.\nEl precio promedio acutal es de: **${newAveragesPrice}**\nEl precio mediano acutal es de: **${median}**`;
