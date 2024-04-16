@@ -53,7 +53,7 @@ setInterval(() => {
 
     BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), "dia");
 
-    reports.create(report, "basicFoodBasket");
+    reports.create(basicFoodBasket.toJSON(), "basicFoodBasket");
 }, 15000);
 
 //Actualizacion de precios por hora 
