@@ -15,11 +15,11 @@ let basicFoodBasketJSON = JSON.parse(fs.readFileSync("supermarkets/basicFoodBask
 let basicFoodBasket = new supermarketsManager.SuperMarkets(basicFoodBasketJSON);
 
 setTimeout(() => {
-    intervals.updateSupermarketsPrices(basicFoodBasket, false, 17000);
+    intervals.updateSupermarketsPrices(basicFoodBasket, false, 10000, 5);
 }, 3600000 / 12);
 
 setTimeout(() => {
-    intervals.updateSupermarketsPrices(basicFoodBasket, false, 17000);
+    intervals.updateSupermarketsPrices(basicFoodBasket, false, 10000, 5);
 }, 3600000);
 
 setInterval(() => {
@@ -67,10 +67,10 @@ setTimeout(() => {
     setInterval(() => {
         let now = new Date();
 
-        if (now.getDay() == 6 || now.getDay() == 7) return;
-        if (now.getHours() < 8 || now.getHours() > 21) return;
         if (!lastMedianPrice) return lastMedianPrice = basicFoodBasket.totalMedian();
         if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.totalAverages();
+        if (now.getDay() == 6 || now.getDay() == 7) return;
+        if (now.getHours() < 8 || now.getHours() > 21) return;
 
         let medianPrice = basicFoodBasket.totalMedian();
         let averagePrice = basicFoodBasket.totalAverages();
@@ -81,5 +81,5 @@ setTimeout(() => {
 
         lastMedianPrice = medianPrice;
         lastAveragesPrice = averagePrice;
-    }, 3600000);
-}, 3600000);
+    }, 3600000 / 2);
+}, 3600000 * 1.5);
