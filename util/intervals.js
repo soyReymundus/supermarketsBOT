@@ -25,9 +25,6 @@ async function updateSupermarketPrices(supermarket, skipCheck = false, time2Slee
                 if (!!link.price) continue;
             };
 
-            console.log("Lnk: " + link.link);
-            console.log("Price Unde: " + link.price);
-
             for (let ii = 0; ii != maxRetries; ii++) {
                 let retryIn = ii + 1;
                 await sleep(time2Sleep * retryIn);
@@ -52,7 +49,7 @@ async function updateSupermarketPrices(supermarket, skipCheck = false, time2Slee
  * @param {Number?} maxRetries Maximos reintentos en caso de error.
  * @returns {void}
  */
-function updateSupermarketsPrices(supermarkets, skipCheck = false, time2Sleep = 7000, maxRetries = 5) {
+function updateSupermarketsPrices(supermarkets, skipCheck = false, time2Sleep = 5000, maxRetries = 5) {
     for (let index = 0; index < supermarkets["supermarkets"].length; index++) {
         let supermarket = supermarkets["supermarkets"][index];
 

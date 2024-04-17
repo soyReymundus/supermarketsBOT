@@ -75,7 +75,6 @@
                 "abbreviation": "6 u",
                 "links": [
                     "https://www.carrefour.com.ar/huevo-color-la-piara-carton-x-6-uni/p",
-                    "https://www.carrefour.com.ar/huevos-color-carrefour-extra-6-u/p",
                     "https://www.carrefour.com.ar/huevos-color-avicoper-6-u/p"
                 ]
             },
@@ -95,7 +94,6 @@
                 "unitOfMeasurement": "Litros",
                 "abbreviation": "1 Lt",
                 "links": [
-                    "https://www.carrefour.com.ar/leche-entera-uat-carrefour-classic-tetra-1-lt-721388/p",
                     "https://www.carrefour.com.ar/leche-entera-larga-vida-la-serenisima-clasica-3-botella-1-l/p",
                     "https://www.carrefour.com.ar/leche-clasica-las-tres-ninas-3-fortificada-1-lt-721795/p"
                 ]
@@ -204,7 +202,6 @@
                 "unitOfMeasurement": "Kilogramos",
                 "abbreviation": "1 Kg",
                 "links": [
-                    "https://www.carrefour.com.ar/asado-x-kg-6631/p",
                     "https://www.carrefour.com.ar/asado-el-mercado-x-kg-681248/p",
                     "https://www.carrefour.com.ar/asado-el-mercado-x-kg-8186/p"
                 ]
@@ -224,232 +221,7 @@
                 "unitOfMeasurement": "Gramos",
                 "abbreviation": "500 G",
                 "links": [
-                    "https://www.carrefour.com.ar/carne-picada-bulnez-678596/p",
                     "https://www.carrefour.com.ar/picada-tartare-etiqueta-negra-x-kg-678598/p"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "La Anonima",
-        "source": "https://supermercado.laanonimaonline.com",
-        "products": [
-            {
-                "name": "Aceite Girasol",
-                "quantity": 1.5,
-                "unitOfMeasurement": "Litros",
-                "abbreviation": "1.5 Lt",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/almacen/aceites/girasol/aceite-de-girasol-natura-x-1-5-lt/art_1963/",
-                    "https://supermercado.laanonimaonline.com/almacen/aceites/girasol/aceite-de-girasol-cocinero-x-1-5-lt/art_1962/",
-                    "https://supermercado.laanonimaonline.com/almacen/aceites/girasol/aceite-de-girasol-canuelas-x-1-5-lt/art_1990/",
-                    "https://supermercado.laanonimaonline.com/almacen/aceites/girasol/aceite-girasol-legitimo-x-1-5-lt/art_19263/"
-                ]
-            },
-            {
-                "name": "Arroz de Grano Fino",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/almacen/arroz-y-legumbres/arroz/arroz-grano-largo-fino-00000-dos-hermanos-x-1-kg/art_14392/",
-                    "https://supermercado.laanonimaonline.com/almacen/arroz-y-legumbres/arroz/arroz-grano-largo-fino-00000-apostoles-x-1-kg/art_2686/",
-                    "https://supermercado.laanonimaonline.com/almacen/arroz-y-legumbres/arroz/arroz-grano-largo-fino-molinos-ala-x-1-kg/art_2440/"
-                ]
-            },
-            {
-                "name": "Azucar",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/almacen/endulzantes/azucar/azucar-comun-a-chango-x-1-kg/art_3354/",
-                    "https://supermercado.laanonimaonline.com/almacen/endulzantes/azucar/azucar-comun-tipo-a-la-providencia-x-1-kg/art_24517/"
-                ]
-            },
-            {
-                "name": "Fideos Tirabuzon",
-                "quantity": 500,
-                "unitOfMeasurement": "Gramos",
-                "abbreviation": "500 G",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/almacen/fideos/largos-y-guiseros/fideos-tirabuzon-best-x-500-g/art_2995/",
-                    "https://supermercado.laanonimaonline.com/almacen/fideos/largos-y-guiseros/fideos-tirabuzon-n28-matarazzo-x-500-g/art_25901/",
-                    "https://supermercado.laanonimaonline.com/almacen/fideos/largos-y-guiseros/fideos-tirabuzon-la-anonima-x-500-g/art_2018/",
-                    "https://supermercado.laanonimaonline.com/almacen/fideos/largos-y-guiseros/fideos-tirabuzon-lucchetti-x-500-g/art_25363/",
-                    "https://supermercado.laanonimaonline.com/almacen/fideos/largos-y-guiseros/fideos-tirabuzon-pastasole-x-500-g/art_19628/"
-                ]
-            },
-            {
-                "name": "Harina de Trigo 000",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-de-trigo-000-blancaflor-x-1-kg/art_27493/",
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-000-ultra-refinada-canuelas-x-1-kg/art_14030/",
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-de-trigo-000-caserita-x-1-kg/art_2754/",
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-de-trigo-000-catriel-x-1-kg/art_1399/",
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-de-trigo-000-chacabuco-x-1-kg/art_13/",
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-de-trigo-000-favorita-x-1000-g/art_26512/",
-                    "https://supermercado.laanonimaonline.com/almacen/harinas/harinas-de-trigo/harina-de-trigo-000-morixe-x-1-kg/art_2045/"
-                ]
-            },
-            {
-                "name": "Huevos",
-                "quantity": 6,
-                "unitOfMeasurement": "Unidades",
-                "abbreviation": "6 u",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frescos/huevos/huevo-color-ponedoras-sur-x-6-un/art_7093/",
-                    "https://supermercado.laanonimaonline.com/frescos/huevos/huevo-color-celulosa-x-6-un/art_3338/",
-                    "https://supermercado.laanonimaonline.com/frescos/huevos/huevo-color-mediano-elepeve-x-6-un/art_8521/",
-                    "https://supermercado.laanonimaonline.com/frescos/huevos/huevo-color-estuche-plastico-x-6-un/art_3334/",
-                    "https://supermercado.laanonimaonline.com/frescos/huevos/huevos-chicos-elepeve-x-6-un/art_8526/"
-                ]
-            },
-            {
-                "name": "Pan Lactal",
-                "quantity": 600,
-                "unitOfMeasurement": "Gramos",
-                "abbreviation": "600 G",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frescos/panificados/panes-de-molde-y-tortillas/pan-lacteado-grande-best-x-600-g/art_1662/"
-                ]
-            },
-            {
-                "name": "Leche",
-                "quantity": 1,
-                "unitOfMeasurement": "Litros",
-                "abbreviation": "1 Lt",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-l-v-entera-tregar-x-1-lt/art_4950/",
-                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-lv-entera-clasica-3-las-tres-ninas-x-1-lt/art_22976/",
-                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-ultra-entera-sachet-3-casanto-x-1-lt/art_19586/",
-                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-l-v-entera-clasica-3-la-serenisima-botella-x-1-lt/art_1732/",
-                    "https://supermercado.laanonimaonline.com/frescos/lacteos/leches/leche-larga-vida-entera-ilolay-x-1-l/art_17882/"
-                ]
-            },
-            {
-                "name": "Yerba",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-c-palo-suave-original-union-x-1-kg/art_14357/",
-                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-c-palo-suave-playadito-x-1-kg/art_12710/",
-                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-con-palo-chamingo-x-1-kg/art_18423/",
-                    "https://supermercado.laanonimaonline.com/almacen/infusiones/yerbas/yerba-mate-tradicional-amanda-x-1-kg/art_3180/"
-                ]
-            },
-            {
-                "name": "Zanahoria",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/zanahoria-kg/art_2391/"
-                ]
-            },
-            {
-                "name": "Berenjena",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/berenjena-kg/art_2376/"
-                ]
-            },
-            {
-                "name": "Tomate Perita",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/tomate-perita-kg/art_3308/"
-                ]
-            },
-            {
-                "name": "Cebolla",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/cebolla-kg/art_56/"
-                ]
-            },
-            {
-                "name": "Papa Granel",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/papa-granel-kg/art_58/"
-                ]
-            },
-            {
-                "name": "Acelga en Paquete",
-                "quantity": 500,
-                "unitOfMeasurement": "Gramos",
-                "abbreviation": "500 G",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/congelados/papas-y-vegetales/vegetales/acelga-congelada-granja-del-sol-x-500-g/art_24478/",
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/verduras-frescas/acelga-envasada-x-500-gr/art_1561/"
-                ]
-            },
-            {
-                "name": "Naranja",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/naranja-kg/art_2401/"
-                ]
-            },
-            {
-                "name": "Manzana",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frutas-y-verduras/manzana-red-elegida-kg/art_2399/"
-                ]
-            },
-            {
-                "name": "Bola de Lomo",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/lomo-e-v-estancias-la-kg/art_2332/",
-                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/bola-de-lomo-feteada-e-v-estancias-la-kg/art_1398/"
-                ]
-            },
-            {
-                "name": "Asado (con Hueso)",
-                "quantity": 1,
-                "unitOfMeasurement": "Kilogramos",
-                "abbreviation": "1 Kg",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/asado-c-hueso-nt-kg/art_6774/"
-                ]
-            },
-            {
-                "name": "Paleta Cocida (en Fetas)",
-                "quantity": 200,
-                "unitOfMeasurement": "Gramos",
-                "abbreviation": "200 G",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/frescos/fiambres/feteados/paleta-cocida-feteada-42-x-200-g/art_3058/"
-                ]
-            },
-            {
-                "name": "Carne Picada Comun",
-                "quantity": 500,
-                "unitOfMeasurement": "Gramos",
-                "abbreviation": "500 G",
-                "links": [
-                    "https://supermercado.laanonimaonline.com/carniceria/carne-vacuna/carne-picada-e-v-estancias-la-x-500-g/art_1382/"
                 ]
             }
         ]
