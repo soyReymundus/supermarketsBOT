@@ -50,8 +50,8 @@ setInterval(() => {
         oldBasicFoodBasket = new supermarketsManager.SuperMarkets(reports.get("basicFoodBasket"));
     };
 
-    let average = basicFoodBasket.getAverage();
-    let oldAverage = oldBasicFoodBasket.getAverage();
+    let average = basicFoodBasket.getProductsAverage();
+    let oldAverage = oldBasicFoodBasket.getProductsAverage();
 
     let difference = operations.getPercentage(oldAverage, average);
 
@@ -69,11 +69,11 @@ setTimeout(() => {
 
         if (now.getDay() == 6 || now.getDay() == 7) return;
         if (now.getHours() < 8 || now.getHours() > 21) return;
-        if (!lastMedianPrice) return lastMedianPrice = basicFoodBasket.getMedian();
-        if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.getAverage();
+        if (!lastMedianPrice) return lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());
+        if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.getProductsAverage();
 
-        let medianPrice = basicFoodBasket.getMedian();
-        let averagePrice = basicFoodBasket.getAverage();
+        let medianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());
+        let averagePrice = basicFoodBasket.getProductsAverage();
 
         if (averagePrice == lastAveragesPrice) return;
 

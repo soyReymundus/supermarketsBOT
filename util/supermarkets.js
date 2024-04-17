@@ -83,6 +83,54 @@ class SuperMarkets {
     };
 
     /**
+     * Obtienes los promedio de la suma de los promedios de los productos de todos los supermercados.
+     * @returns {Number[]}
+     */
+    getAllProductsAverage() {
+        let prices = [];
+
+        for (let index = 0; index < this.supermarkets.length; index++) {
+            const supermarket = this.supermarkets[index];
+
+            prices.push(supermarket.totalAverages());
+        };
+
+        return prices;
+    };
+
+    /**
+     * Obtienes los medianas de la suma de las medianas de los productos de todos los supermercados.
+     * @returns {Number[]}
+     */
+    getAllProductsMedian() {
+        let prices = [];
+
+        for (let index = 0; index < this.supermarkets.length; index++) {
+            const supermarket = this.supermarkets[index];
+
+            prices.push(supermarket.totalMedian());
+        };
+
+        return prices;
+    };
+
+    /**
+     * Obtienes el promedio de la suma de los promedios de los productos de todos los supermercados.
+     * @returns {Number}
+     */
+    getProductsAverage() {
+        return operations.getAverage(this.getAllProductsAverage());
+    };
+
+    /**
+     * Obtienes la mediana de la suma de las medianas de los productos de todos los supermercados.
+     * @returns {Number}
+     */
+    getProductsMedian() {
+        return operations.getMedian(this.getAllProductsMedian());
+    };
+
+    /**
      * Esta funcion convierte la clase en un JSON.
      * Ideal para almacenar en archivos o MongoDB.
      * @returns {{name: String, source: String, products: {unitOfMeasurement: String, quantity: Number, name: String, abbreviation: String, links: {price: Number, link: String}[]}[]}[]}
