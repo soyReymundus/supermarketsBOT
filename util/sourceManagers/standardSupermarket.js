@@ -1,9 +1,9 @@
 /**
- * @description Archivo de utilidad encargado de proporcionar informacion obtenida del sitio web de Carrefour.
+ * @description Archivo de utilidad encargado de proporcionar informacion obtenida de los supermercados estandar.
  */
 
 /**
- * Modulo que proporciona informacion obtenida del sitio web de Carrefour.
+ * Modulo que proporciona informacion obtenida del sitio web de los supermercados estandar.
  */
 module.exports = {
     getPrice
