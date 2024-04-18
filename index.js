@@ -72,7 +72,7 @@ setTimeout(() => {
         if (!lastMedianPrice) return lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());
         if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.getProductsAverage();
 
-        let medianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());
+        let medianPrice = operations.getMedian(basicFoodBasket.getAllProductsAverage());
         let averagePrice = basicFoodBasket.getProductsAverage();
 
         if (averagePrice == lastAveragesPrice) return;
