@@ -3,6 +3,7 @@
  */
 
 const fs = require("fs");
+const reports = new Map();
 
 /**
  * Creas un informe que se guardara en la carpeta ./reports con la fecha correspondiente.
@@ -15,16 +16,17 @@ function create(content, name) {
     try {
         let now = new Date();
         let formatedDate = String(now.getDate()).padStart(2, '0') + "-" + String(now.getMonth() + 1).padStart(2, '0') + "-" + now.getFullYear();
-        let fileName = `./reports/${name}-${formatedDate}.json`;
-        let fileLastName = `./reports/${name}-last.json`;
+        let fileName = `.${name}-${formatedDate}`;
+        let fileLastName = `${name}-last`;
 
-        fs.writeFileSync(fileName, JSON.stringify(content));
+        reports.set(fileName, content);
+        reports.set(fileLastName, content);
 
-        fs.writeFileSync(fileLastName, JSON.stringify(content));
+        fs.writeFileSync(`./reports/${fileName}.json`, JSON.stringify(content));
+        fs.writeFileSync(`./reports/${fileLastName}.json`, JSON.stringify(content));
 
         return true;
     } catch (e) {
-        console.log(e)
         return false;
     };
 };
@@ -37,14 +39,20 @@ function create(content, name) {
  * @returns {Object | null}
  */
 function get(name, date = "last") {
+    if (!name) throw new Error("A name was not provided to search the report.");
+    let fileName = `${name}-${date}`;
+
     try {
-        if (!name) return reject(new Error("A name was not provided to search the report."));
-        let fileName = `./reports/${name}-${date}.json`;
+        if (reports.has(fileName)) {
+            return reports.get(fileName);
+        } else {
+            let report = JSON.parse(fs.readFileSync(`./reports/${fileName}.json`).toString());
+            reports.set(fileName, report);
 
-
-        return JSON.parse(fs.readFileSync(fileName).toString());
+            return report;
+        };
     } catch (e) {
-        console.log(e)
+        if (date != "last") reports.set(fileName, null);
         return null;
     };
 };
