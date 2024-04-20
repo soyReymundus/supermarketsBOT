@@ -9,7 +9,17 @@ const supermarketsManager = require("./util/supermarkets.js");
 const operations = require("./util/operations.js");
 const intervals = require("./util/intervals.js");
 const reports = require("./util/reports.js");
+const api = require("./api.js");
+const https = require("https");
 const fs = require("fs");
+
+const certificate = fs.readFileSync('./cert/fullchain.pem', 'utf8');
+const privateKey = fs.readFileSync('./cert/privkey.pem', 'utf8');
+
+const credentials = { key: privateKey, cert: certificate };
+const httpsServer = https.createServer(credentials, api);
+
+httpsServer.listen(443);
 
 let basicFoodBasketJSON = JSON.parse(fs.readFileSync("supermarkets/basicFoodBasket.json"));
 let basicFoodBasket = new supermarketsManager.SuperMarkets(basicFoodBasketJSON);
