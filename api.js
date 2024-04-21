@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
         return res
             .status(200)
             .json({
-                "message": "Para el uso de la API debes incluir los siguiente 3 parametros (query) en la URL:\nname: El nombre de los informes a solicitar.\ndate: Fecha del informe en formato DD-MM-YYYY (opcional).\nlimit: El limite de informes por defecto es 1 (opcional)."
+                "message": "Ok."
             });
     };
 
@@ -72,6 +72,16 @@ app.get("/", (req, res) => {
         };
 
         for (let index = 0; index < dates.length; index++) {
+            if (dates[index].includes(".") || dates[index].includes("/") || dates[index].includes("\\") || dates[index].includes("?")) {
+                res.setHeader("X-Status-Cat", "https://http.cat/404");
+                return res
+                    .status(415)
+                    .json({
+                        "message": "La fecha no esta en el formato requerido.",
+                        "adminPanel": "https://lc.cx/7cVzUW"
+                    });
+            };
+
             dates[index] = parseInt(dates[index]);
 
             if (isNaN(dates[index])) {
@@ -82,6 +92,16 @@ app.get("/", (req, res) => {
                         "message": "La fecha no esta en el formato requerido."
                     });
             };
+        };
+        
+        const now = new Date().getFullYear();
+        if (dates[2] < 2023 || dates[2] > now) {
+            res.setHeader("X-Status-Cat", "https://http.cat/400");
+            return res
+                .status(400)
+                .json({
+                    "message": "Se proporciono una fecha muy lejana."
+                });
         };
 
         reportDate = new Date(dates[2], dates[1] - 1, dates[0]);
