@@ -28,8 +28,8 @@ client.commands.set("invite", {
             "embeds": [
                 new EmbedBuilder()
                     .setTitle("Agregame a tu servidor!")
-                    .setDescription("Para tener a este BOT en tu servidor haz [click aqui](https://discord.com/oauth2/authorize?client_id=1228725876099907694&permissions=8&scope=bot)")
-                    .setURL("https://discord.com/oauth2/authorize?client_id=1228725876099907694&permissions=8&scope=bot")
+                    .setDescription("Para tener a este BOT en tu servidor haz [click aqui](https://discord.com/oauth2/authorize?client_id=1228725876099907694)")
+                    .setURL("https://discord.com/oauth2/authorize?client_id=1228725876099907694")
                     .setColor("#00FFFF")
                     .setFooter({ "text": "SupermarketsBOT", "iconURL": "https://media.discordapp.net/attachments/1173017996848013315/1228807964018606120/carrito.jpeg?ex=662d6398&is=661aee98&hm=85c052d5bb4862f48a4d1c144332ed65166adf78c7a82ccfbf20e57bba857dbe&=&format=webp&width=297&height=297" })
             ]
