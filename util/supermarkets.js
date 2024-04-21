@@ -3,7 +3,7 @@
  */
 
 const anonimaManager = require("./sourceManagers/laAnonima.js");
-const carrefourManager = require("./sourceManagers/carrefour.js");
+const standardSupermarketManager = require("./sourceManagers/standardSupermarket.js");
 const operations = require("./operations.js");
 
 /**
@@ -486,7 +486,27 @@ class ProductLink {
                         });
                     break;
                 case "https://www.carrefour.com.ar":
-                    carrefourManager.getPrice(this.link)
+                    standardSupermarketManager.getPrice(this.link)
+                        .then((price) => {
+                            resolve(price);
+                            this.price = price;
+                        })
+                        .catch((e) => {
+                            reject(e);
+                        });
+                    break;
+                case "https://www.vea.com.ar":
+                    standardSupermarketManager.getPrice(this.link)
+                        .then((price) => {
+                            resolve(price);
+                            this.price = price;
+                        })
+                        .catch((e) => {
+                            reject(e);
+                        });
+                    break;
+                case "https://www.masonline.com.ar":
+                    standardSupermarketManager.getPrice(this.link)
                         .then((price) => {
                             resolve(price);
                             this.price = price;

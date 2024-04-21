@@ -38,6 +38,9 @@ setInterval(() => {
 
 //Cierre semanal y diario del promedio de la canasta basica.
 var lastClosing = 0;
+var lastAveragesPrice = 0;
+var lastMedianPrice = 0;
+
 setInterval(() => {
     let now = new Date();
 
@@ -68,19 +71,20 @@ setInterval(() => {
     BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), "dia");
 
     reports.create(basicFoodBasket.toJSON(), "basicFoodBasket");
+
+    lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());;
+    lastAveragesPrice = average;
 }, 15000);
 
 //Actualizacion de precios por hora 
-var lastAveragesPrice = 0;
-var lastMedianPrice = 0;
 setTimeout(() => {
     setInterval(() => {
         let now = new Date();
 
-        if (now.getDay() == 6 || now.getDay() == 7) return;
-        if (now.getHours() < 8 || now.getHours() > 21) return;
         if (!lastMedianPrice) return lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());
         if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.getProductsAverage();
+        if (now.getDay() == 6 || now.getDay() == 7) return;
+        if (now.getHours() < 8 || now.getHours() > 21) return;
 
         let medianPrice = operations.getMedian(basicFoodBasket.getAllProductsAverage());
         let averagePrice = basicFoodBasket.getProductsAverage();
