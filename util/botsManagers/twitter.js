@@ -142,17 +142,17 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
             percentage = percentage == "-0.00" ? "-0.01" : percentage;
 
             if (oldAveragesPrice > newAveragesPrice) {
-                originalTweet = `El precio de ${name} tuvo una variacion positiva de un +${percentage}% %FECHA%.\nEl precio promedio acutal es de: ${newAveragesPrice}\nEl precio mediano acutal es de: ${median}`;
+                originalTweet = `El precio de ${name} tuvo una variacion negativa de un ${percentage}% %FECHA%.\nEl precio promedio actual es de: ${newAveragesPrice.toFixed(2)}\nEl precio mediano actual es de: ${median.toFixed(2)}`;
             } else if (oldAveragesPrice < newAveragesPrice) {
-                originalTweet = `El precio de ${name} tuvo una variacion negativa de un ${percentage}% %FECHA%.\nEl precio promedio acutal es de: ${newAveragesPrice}\nEl precio mediano acutal es de: ${median}`;
+                originalTweet = `El precio de ${name} tuvo una variacion positiva de un +${percentage}% %FECHA%.\nEl precio promedio actual es de: ${newAveragesPrice.toFixed(2)}\nEl precio mediano actual es de: ${median.toFixed(2)}`;
             } else {
-                originalTweet = `El precio de ${name} no tuvo variacion %FECHA%.\nEl precio promedio acutal es de: ${newAveragesPrice}\nEl precio mediano acutal es de: ${median}`;
+                originalTweet = `El precio de ${name} no tuvo variacion %FECHA%.\nEl precio promedio actual es de: ${newAveragesPrice.toFixed(2)}\nEl precio mediano actual es de: ${median.toFixed(2)}`;
             };
 
             if (!date) {
-                originalTweet.replace(" %FECHA%", "");
+                msg = originalTweet.replace(" %FECHA%", "");
             } else {
-                originalTweet.replace("%FECHA%", `este/a ${date}`);
+                msg = originalTweet.replace("%FECHA%", `este/a ${date}`);
             };
 
             let twett = await twitterClient.v2.tweet(originalTweet);

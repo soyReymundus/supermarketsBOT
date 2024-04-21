@@ -13,7 +13,7 @@ const supermarketsManager = require("./supermarkets");
  * @param {Number?} maxRetries Maximos reintentos en caso de error.
  * @returns {Promise<void>}
  */
-async function updateSupermarketPrices(supermarket, skipCheck = false, time2Sleep = 5000, maxRetries = 3) {
+async function updateSupermarketPrices(supermarket, skipCheck = false, time2Sleep = 2000, maxRetries = 3) {
     for (let index = 0; index < supermarket["products"].length; index++) {
         const product = supermarket["products"][index];
         let links = product.links;
@@ -49,7 +49,7 @@ async function updateSupermarketPrices(supermarket, skipCheck = false, time2Slee
  * @param {Number?} maxRetries Maximos reintentos en caso de error.
  * @returns {void}
  */
-function updateSupermarketsPrices(supermarkets, skipCheck = false, time2Sleep = 5000, maxRetries = 5) {
+function updateSupermarketsPrices(supermarkets, skipCheck = false, time2Sleep = 2000, maxRetries = 5) {
     for (let index = 0; index < supermarkets["supermarkets"].length; index++) {
         let supermarket = supermarkets["supermarkets"][index];
 

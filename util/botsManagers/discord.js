@@ -145,7 +145,7 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
                             new EmbedBuilder()
                                 .setTitle(title)
                                 .setDescription(msg)
-                                .setURL("https://discord.com/oauth2/authorize?client_id=1228725876099907694&permissions=8&scope=bot")
+                                .setURL("https://discord.com/oauth2/authorize?client_id=1228725876099907694")
                                 .setColor("#00FFFF")
                                 .setFooter({ "text": "SupermarketsBOT", "iconURL": "https://media.discordapp.net/attachments/1173017996848013315/1228807964018606120/carrito.jpeg?ex=662d6398&is=661aee98&hm=85c052d5bb4862f48a4d1c144332ed65166adf78c7a82ccfbf20e57bba857dbe&=&format=webp&width=297&height=297" })
                         ]
@@ -180,19 +180,19 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
             percentage = percentage == "-0.00" ? "-0.01" : percentage;
 
             if (oldAveragesPrice > newAveragesPrice) {
-                title = "Inflacion!";
-                msg = `El precio de ${name} tuvo una variacion positiva de un +**${percentage}%** %FECHA%.\nEl precio promedio acutal es de: **${newAveragesPrice}**\nEl precio mediano acutal es de: **${median}**`;
-            } else if (oldAveragesPrice < newAveragesPrice) {
                 title = "Deflacion!";
-                msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%** %FECHA%.\nEl precio promedio acutal es de: **${newAveragesPrice}**\nEl precio mediano acutal es de: **${median}**`;
+                msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
+            } else if (oldAveragesPrice < newAveragesPrice) {
+                title = "Inflacion!";
+                msg = `El precio de ${name} tuvo una variacion positiva de un +**${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
             } else {
-                msg = `El precio de ${name} no tuvo variacion %FECHA%.\nEl precio promedio acutal es de: ${newAveragesPrice}\nEl precio mediano acutal es de: ${median}`;
+                msg = `El precio de ${name} no tuvo variacion %FECHA%.\nEl precio promedio actual es de: ${newAveragesPrice.toFixed(2)}\nEl precio mediano actual es de: ${median.toFixed(2)}`;
             };
 
             if (!date) {
-                msg.replace(" %FECHA%", "");
+                msg = msg.replace(" %FECHA%", "");
             } else {
-                msg.replace("%FECHA%", `este/a ${date}`);
+                msg = msg.replace("%FECHA%", `este/a ${date}`);
             };
 
             msg += "\n**Fuentes:** ";
@@ -223,7 +223,7 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
                             new EmbedBuilder()
                                 .setTitle(title)
                                 .setDescription(msg)
-                                .setURL("https://discord.com/oauth2/authorize?client_id=1228725876099907694&permissions=8&scope=bot")
+                                .setURL("https://discord.com/oauth2/authorize?client_id=1228725876099907694")
                                 .setColor("#00FFFF")
                                 .setFooter({ "text": "SupermarketsBOT", "iconURL": "https://media.discordapp.net/attachments/1173017996848013315/1228807964018606120/carrito.jpeg?ex=662d6398&is=661aee98&hm=85c052d5bb4862f48a4d1c144332ed65166adf78c7a82ccfbf20e57bba857dbe&=&format=webp&width=297&height=297" })
                         ]

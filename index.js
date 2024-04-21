@@ -45,35 +45,35 @@ setInterval(() => {
     let now = new Date();
 
     if (now.getHours() != 22) return;
-    if (now.getDay() == 6) return;
     if (lastClosing == now.getDate()) return;
     lastClosing = now.getDate();
 
-    let date;
-    let oldBasicFoodBasket;
-
-    if (now.getDay() == 7) {
-        let pastWeek = new Date(Date.now() - 604800000);
-        let formatedDate = String(pastWeek.getDate()).padStart(2, '0') + "-" + String(pastWeek.getMonth() + 1).padStart(2, '0') + "-" + pastWeek.getFullYear();
-
-        date = "semana";
-        oldBasicFoodBasket = new supermarketsManager.SuperMarkets(reports.get("basicFoodBasket", formatedDate));
-    } else {
-        date = "dia";
-        oldBasicFoodBasket = new supermarketsManager.SuperMarkets(reports.get("basicFoodBasket"));
-    };
-
     let average = basicFoodBasket.getProductsAverage();
-    let oldAverage = oldBasicFoodBasket.getProductsAverage();
-
-    let difference = operations.getPercentage(oldAverage, average);
-
-    BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), "dia");
-
-    reports.create(basicFoodBasket.toJSON(), "basicFoodBasket");
 
     lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());;
     lastAveragesPrice = average;
+
+    reports.create(basicFoodBasket.toJSON(), "basicFoodBasket");
+
+    if (now.getDay() != 6) {
+        let date;
+        let oldBasicFoodBasket;
+
+        if (now.getDay() == 0) {
+            let pastWeek = new Date(Date.now() - 604800000);
+            let formatedDate = String(pastWeek.getDate()).padStart(2, '0') + "-" + String(pastWeek.getMonth() + 1).padStart(2, '0') + "-" + pastWeek.getFullYear();
+
+            date = "semana";
+            oldBasicFoodBasket = new supermarketsManager.SuperMarkets(reports.get("basicFoodBasket", formatedDate));
+        } else {
+            date = "dia";
+            oldBasicFoodBasket = new supermarketsManager.SuperMarkets(reports.get("basicFoodBasket"));
+        };
+
+        let oldAverage = oldBasicFoodBasket.getProductsAverage();
+        let difference = operations.getPercentage(oldAverage, average);
+        BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), "dia");
+    };
 }, 15000);
 
 //Actualizacion de precios por hora 
@@ -83,7 +83,7 @@ setTimeout(() => {
 
         if (!lastMedianPrice) return lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());
         if (!lastAveragesPrice) return lastAveragesPrice = basicFoodBasket.getProductsAverage();
-        if (now.getDay() == 6 || now.getDay() == 7) return;
+        if (now.getDay() == 6 || now.getDay() == 0) return;
         if (now.getHours() < 8 || now.getHours() > 21) return;
 
         let medianPrice = operations.getMedian(basicFoodBasket.getAllProductsAverage());
