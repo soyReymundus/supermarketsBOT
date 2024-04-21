@@ -505,6 +505,16 @@ class ProductLink {
                             reject(e);
                         });
                     break;
+                case "https://www.masonline.com.ar":
+                    standardSupermarketManager.getPrice(this.link)
+                        .then((price) => {
+                            resolve(price);
+                            this.price = price;
+                        })
+                        .catch((e) => {
+                            reject(e);
+                        });
+                    break;
                 default:
                     reject(new Error("Product source is not supported"));
                     break;

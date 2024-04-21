@@ -29,7 +29,7 @@ function getPrice(link) {
                 response.text()
                     .then((HTMLResponse) => {
                         try {
-                            let txtPrice = HTMLResponse.replace(/ /g, "").replace(/\n/g, "").split(`property="product:price:amount"content="`)[1].split(`"/>`)[0];
+                            let txtPrice = HTMLResponse.replace(/ /g, "").replace(/\n/g, "").split(`"highPrice":`)[1].split(`,"priceCurrency"`)[0];
                             let price = parseFloat(txtPrice);
 
                             if (isNaN(price)) return reject(new Error("Error when obtaining the requested price, the website may have changed format!"));
@@ -37,7 +37,7 @@ function getPrice(link) {
                             return resolve(price);
                         } catch (e) {
                             try {
-                                let txtPrice = HTMLResponse.replace(/ /g, "").replace(/\n/g, "").split(`"highPrice":`)[1].split(`,"priceCurrency"`)[0];
+                                let txtPrice = HTMLResponse.replace(/ /g, "").replace(/\n/g, "").split(`property="product:price:amount"content="`)[1].split(`"/>`)[0];
                                 let price = parseFloat(txtPrice);
 
                                 if (isNaN(price)) return reject(new Error("Error when obtaining the requested price, the website may have changed format!"));
