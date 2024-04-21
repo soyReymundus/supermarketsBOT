@@ -130,11 +130,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# DataBase
-
+# Database
 discord.json
 
 # Support Files
+cert/
 test.json
 test.js
 test2.js

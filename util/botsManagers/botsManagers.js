@@ -47,8 +47,8 @@ function publishTopPrices(prices, inflation = true, rawSource, date) {
  */
 function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date) {
     return new Promise(async (resolve, reject) => {
-        twitter.publishVariationOfPrices(prices, inflation = true, rawSource, date);
-        discord.publishVariationOfPrices(prices, inflation = true, rawSource, date);
+        twitter.publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date);
+        discord.publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date);
         resolve();
     });
 };
