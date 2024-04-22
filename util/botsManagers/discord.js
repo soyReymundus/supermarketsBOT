@@ -3,8 +3,9 @@
  */
 
 const { Client, GatewayIntentBits, EmbedBuilder, Collection, SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const operations = require("../operations.js");
 const fs = require("fs");
-require('dotenv').config();
+
 /**
  * La base de datos de canales admitidos.
  * @type {String[]}
@@ -190,9 +191,9 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
             };
 
             if (!date) {
-                msg = msg.replace(" %FECHA%", "");
+                msg = msg.replace(/ %FECHA%/g, "");
             } else {
-                msg = msg.replace("%FECHA%", `este/a ${date}`);
+                msg = msg.replace(/%FECHA%/g, `este/a ${date}`);
             };
 
             msg += "\n**Fuentes:** ";

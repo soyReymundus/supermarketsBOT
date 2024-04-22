@@ -150,9 +150,9 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
             };
 
             if (!date) {
-                msg = originalTweet.replace(" %FECHA%", "");
+                msg = originalTweet.replace(/ %FECHA%/g, "");
             } else {
-                msg = originalTweet.replace("%FECHA%", `este/a ${date}`);
+                msg = originalTweet.replace(/%FECHA%/g, `este/a ${date}`);
             };
 
             let twett = await twitterClient.v2.tweet(originalTweet);
