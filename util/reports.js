@@ -16,7 +16,7 @@ function create(content, name) {
     try {
         let now = new Date();
         let formatedDate = String(now.getDate()).padStart(2, '0') + "-" + String(now.getMonth() + 1).padStart(2, '0') + "-" + now.getFullYear();
-        let fileName = `.${name}-${formatedDate}`;
+        let fileName = `${name}-${formatedDate}`;
         let fileLastName = `${name}-last`;
 
         reports.set(fileName, content);
