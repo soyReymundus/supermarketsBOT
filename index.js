@@ -72,7 +72,7 @@ setInterval(() => {
 
         let oldAverage = oldBasicFoodBasket.getProductsAverage();
         let difference = operations.getPercentage(oldAverage, average);
-        BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), "dia");
+        BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), date);
     };
 }, 15000);
 
