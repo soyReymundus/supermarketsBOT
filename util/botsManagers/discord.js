@@ -104,10 +104,10 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
 
             if (rawPercentage > 0) {
                 title = "aumento!";
-                msg = `El precio de ${name} tuvo una variacion positiva de un +**${percentage}%**`;
+                msg = `El precio de ${name} tuvo una variacion **positiva** de un **+${percentage}%**`;
             } else if (rawPercentage < 0) {
                 title = "disminucion!";
-                msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%**`;
+                msg = `El precio de ${name} tuvo una variacion **negativa** de un **${percentage}%**`;
             } else {
                 msg = `El precio de ${name} no tuvo variacion`;
             };
@@ -115,7 +115,7 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
             if (!date) {
                 msg += ".";
             } else {
-                msg += ` este/a ${date}.`
+                msg += ` este/a **${date}**.`
             };
 
             msg += "\n**Fuentes:** ";
@@ -182,10 +182,10 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
 
             if (oldAveragesPrice > newAveragesPrice) {
                 title = "Deflacion!";
-                msg = `El precio de ${name} tuvo una variacion negativa de un **${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
+                msg = `El precio de ${name} tuvo una variacion **negativa** de un **${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
             } else if (oldAveragesPrice < newAveragesPrice) {
                 title = "Inflacion!";
-                msg = `El precio de ${name} tuvo una variacion positiva de un +**${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
+                msg = `El precio de ${name} tuvo una variacion **positiva** de un **+${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
             } else {
                 msg = `El precio de ${name} no tuvo variacion %FECHA%.\nEl precio promedio actual es de: ${newAveragesPrice.toFixed(2)}\nEl precio mediano actual es de: ${median.toFixed(2)}`;
             };
@@ -193,7 +193,7 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
             if (!date) {
                 msg = msg.replace(/ %FECHA%/g, "");
             } else {
-                msg = msg.replace(/%FECHA%/g, `este/a ${date}`);
+                msg = msg.replace(/%FECHA%/g, `este/a **${date}**`);
             };
 
             msg += "\n**Fuentes:** ";
