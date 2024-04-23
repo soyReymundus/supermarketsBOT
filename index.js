@@ -53,8 +53,6 @@ setInterval(() => {
     lastMedianPrice = operations.getAverage(basicFoodBasket.getAllProductsAverage());;
     lastAveragesPrice = average;
 
-    reports.create(basicFoodBasket.toJSON(), "basicFoodBasket");
-
     if (now.getDay() != 6) {
         let date;
         let oldBasicFoodBasket;
@@ -74,6 +72,8 @@ setInterval(() => {
         let difference = operations.getPercentage(oldAverage, average);
         BotsManager.publishAveragePercentagePrices("la canasta basica alimentaria", difference, basicFoodBasket.getNames(), date);
     };
+
+    reports.create(basicFoodBasket.toJSON(), "basicFoodBasket");
 }, 15000);
 
 //Actualizacion de precios por hora 
