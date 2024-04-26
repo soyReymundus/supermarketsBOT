@@ -93,7 +93,7 @@ setTimeout(() => {
 
         if (averagePrice == lastAveragesPrice) return;
 
-        BotsManager.publishVariationOfPrices("la canasta basica alimentaria", lastAveragesPrice, averagePrice, medianPrice, basicFoodBasket.getNames());
+        BotsManager.publishVariationOfPrices("la canasta basica alimentaria", false, lastAveragesPrice, averagePrice, medianPrice, basicFoodBasket.getNames());
 
         lastMedianPrice = medianPrice;
         lastAveragesPrice = averagePrice;

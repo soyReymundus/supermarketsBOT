@@ -165,13 +165,14 @@ function publishAveragePercentagePrices(name, rawPercentage, rawSource, date) {
 /**
  * Publicas la variacion de precios.
  * @param {String} name El nombre del conjunto de productos.
+ * @param {Boolean} publishCurrentPrice Si es verdadero se publicara ademas ademas del porcentaje el precio promedio y mediano.
  * @param {Number} oldAveragesPrice La variacion porcentual.
  * @param {Number} newAveragesPrice La variacion porcentual.
  * @param {Number} median La mediana actual.
  * @param {String | String[]} rawSource La fuente/s de informacion.
  * @param {String?} date El periodo de tiempo de la variacion.
  */
-function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date) {
+function publishVariationOfPrices(name, publishCurrentPrice, oldAveragesPrice, newAveragesPrice, median, rawSource, date) {
     return new Promise(async (resolve, reject) => {
         try {
             let msg = "";
@@ -182,12 +183,16 @@ function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, medi
 
             if (oldAveragesPrice > newAveragesPrice) {
                 title = "Deflacion!";
-                msg = `El precio de ${name} tuvo una variacion **negativa** de un **${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
+                msg = `El precio de ${name} tuvo una variacion **negativa** de un **${percentage}%** %FECHA%.`;
             } else if (oldAveragesPrice < newAveragesPrice) {
                 title = "Inflacion!";
-                msg = `El precio de ${name} tuvo una variacion **positiva** de un **+${percentage}%** %FECHA%.\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
+                msg = `El precio de ${name} tuvo una variacion **positiva** de un **+${percentage}%** %FECHA%.`;
             } else {
-                msg = `El precio de ${name} no tuvo variacion %FECHA%.\nEl precio promedio actual es de: ${newAveragesPrice.toFixed(2)}\nEl precio mediano actual es de: ${median.toFixed(2)}`;
+                msg = `El precio de ${name} no tuvo variacion %FECHA%.`;
+            };
+
+            if (publishCurrentPrice) {
+                msg += `\nEl precio promedio actual es de: **${newAveragesPrice.toFixed(2)}**\nEl precio mediano actual es de: **${median.toFixed(2)}**`;
             };
 
             if (!date) {

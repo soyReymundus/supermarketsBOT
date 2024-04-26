@@ -39,16 +39,17 @@ function publishTopPrices(prices, inflation = true, rawSource, date) {
 /**
  * Publicas la variacion de precios en todas las redes sociales.
  * @param {String} name El nombre del conjunto de productos.
+ * @param {Boolean} publishCurrentPrice Si es verdadero se publicara ademas ademas del porcentaje el precio promedio y mediano.
  * @param {Number} oldAveragesPrice La variacion porcentual.
  * @param {Number} newAveragesPrice La variacion porcentual.
  * @param {Number} median La mediana actual.
  * @param {String | String[]} rawSource La fuente/s de informacion.
  * @param {String?} date El periodo de tiempo de la variacion.
  */
-function publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date) {
+function publishVariationOfPrices(name, publishCurrentPrice, oldAveragesPrice, newAveragesPrice, median, rawSource, date) {
     return new Promise(async (resolve, reject) => {
-        twitter.publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date);
-        discord.publishVariationOfPrices(name, oldAveragesPrice, newAveragesPrice, median, rawSource, date);
+        twitter.publishVariationOfPrices(name, publishCurrentPrice, oldAveragesPrice, newAveragesPrice, median, rawSource, date);
+        discord.publishVariationOfPrices(name, publishCurrentPrice, oldAveragesPrice, newAveragesPrice, median, rawSource, date);
         resolve();
     });
 };
