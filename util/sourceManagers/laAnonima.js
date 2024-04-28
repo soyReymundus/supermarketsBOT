@@ -33,7 +33,8 @@ function getPrice(link) {
                             let price = parseInt(txtPrice);
 
                             if (isNaN(price)) return reject(new Error("Error when obtaining the requested price, the website may have changed format!"));
-
+                            if (price == 0) return reject(new Error("Could not get a price because the product is not in stock!"));
+                            
                             return resolve(price);
                         } catch (e) {
                             return reject(new Error("Error when obtaining the requested price, the website may have changed format!"));
